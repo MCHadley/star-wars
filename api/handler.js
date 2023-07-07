@@ -4,7 +4,7 @@
 const axios = require('axios');
 const {responseHandler, swapi} = require('../util/Utils');
 
-const getStarships = async (event, context) => {
+const getStarships = async () => {
   try {
     const starships = swapi('people');
     const response = await axios.get(starships, {params: {search: 'Luke Skywalker'}});
@@ -21,7 +21,7 @@ const getStarships = async (event, context) => {
   }
 };
 
-const getSpecies = async (event, context) => {
+const getSpecies = async () => {
   try {
     const episodeOne = swapi('films');
     const response = await axios.get(episodeOne, {params: {search: 'The Phantom Menace'}});
@@ -40,7 +40,7 @@ const getSpecies = async (event, context) => {
   }
 };
 
-const getPopulation = async (event, context) => {
+const getPopulation = async () => {
   const planets = swapi('planets');
   let page = 1;
   let populationList = [];
