@@ -1,14 +1,43 @@
 service: star-wars
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 provider:
   name: aws
   runtime: nodejs18.x
 
 functions:
-  api:
-    handler: index.handler
+  hello:
+    handler: greeting.hello
     events:
       - httpApi:
           path: /
           method: get
+  getStarships:
+    handler: api/handler.getStarships
+    events:
+      - httpApi:
+          path: /starships
+          method: GET
+  getSpecies:
+    handler: api/handler.getSpecies
+    timeout: 900
+    events:
+      - httpApi:
+          path: /species
+          method: GET
+  getPopulation:
+    handler: api/handler.getPopulation
+    timeout: 900
+    events:
+      - httpApi:
+          path: /population
+          method: GET
+
+custom:
+  serverless-offline:
+    httpPort: 3000
+    lambdaPort: 3002
+    noPrependStageInUrl: true
+
+plugins:
+  - serverless-offline
