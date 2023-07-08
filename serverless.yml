@@ -21,6 +21,9 @@ functions:
           RequestParameters:
             querystrings:
               status: true
+          cors:
+            allowedMethods:
+              - GET
   getSpecies:
     handler: api/handler.getSpecies
     timeout: 900
@@ -31,6 +34,9 @@ functions:
           RequestParameters:
             querystrings:
               status: true
+          cors:
+            allowedMethods:
+              - GET
   getPopulation:
     handler: api/handler.getPopulation
     timeout: 900
@@ -38,6 +44,9 @@ functions:
       - httpApi:
           path: /population
           method: GET
+          cors:
+            allowedMethods:
+              - GET
 
 custom:
   serverless-offline:
