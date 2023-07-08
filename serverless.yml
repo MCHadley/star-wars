@@ -18,6 +18,9 @@ functions:
       - httpApi:
           path: /starships
           method: GET
+          RequestParameters:
+            querystrings:
+              status: true
   getSpecies:
     handler: api/handler.getSpecies
     timeout: 900
@@ -25,6 +28,9 @@ functions:
       - httpApi:
           path: /species
           method: GET
+          RequestParameters:
+            querystrings:
+              status: true
   getPopulation:
     handler: api/handler.getPopulation
     timeout: 900
