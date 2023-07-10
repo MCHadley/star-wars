@@ -18,9 +18,11 @@ This is a small API to return the following information from the Star Wars API:
 3. The total galactic population
 
 To run the api
-1. run `npm install`
-2. run `sls offline`
-3. Use Postman or Insomnia to hit the following:
+1. run `npm install -g serverless`
+2. run `npm install serverless-offline`
+3. run `npm install`
+4. run `sls offline`
+4. Use Postman or Insomnia to hit the following:
 - http://localhost:3000/starships
 - http://localhost:3000/species
 - http://localhost:3000/population
