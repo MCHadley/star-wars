@@ -74,6 +74,7 @@ const getPopulation = async () => {
   const totalPopulation = populationList.reduce((partialSum, a) => partialSum + a, 0);
   const populationReturn = {
     totalPopulation: totalPopulation,
+    totalPopulation: totalPopulation,
     planetTotal: planetCounter,
   };
   return responseHandler(200, populationReturn);

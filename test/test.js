@@ -50,8 +50,13 @@ describe('Test population endpoint', () =>{
     assert.equal(res.status, 200);
   }, 50000);
 
-  it('Returns number equals 1711401432500', async () => {
+  it('Returns total population equals 1711401432500', async () => {
     const res = await request;
-    assert.equal(res.data.message, 1711401432500);
+    assert.equal(res.data.message.totalPopulation, 1711401432500);
+  });
+
+  it('Returns planet counter equals 60', async () => {
+    const res = await request;
+    assert.equal(res.data.message.planetTotal, 60);
   });
 });
