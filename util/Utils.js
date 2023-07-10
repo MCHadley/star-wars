@@ -3,7 +3,7 @@ function responseHandler(statusCode, message) {
   return response = {
     statusCode: statusCode,
     body: JSON.stringify({
-      message: message,
+      message,
     }),
   };
 }

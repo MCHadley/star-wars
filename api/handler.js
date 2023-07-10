@@ -53,6 +53,7 @@ const getPopulation = async () => {
   let page = 1;
   let populationList = [];
   let lastResult = [];
+  let planetCounter = 0;
   do {
     try {
       const response = await axios.get(planets, {params: {page: page}});
@@ -60,6 +61,7 @@ const getPopulation = async () => {
       lastResult = data;
       data.results.forEach((planet) => {
         const {population} = planet;
+        planetCounter++;
         if (population !== 'unknown') {
           populationList.push(parseInt(population));
         }
@@ -69,8 +71,12 @@ const getPopulation = async () => {
       console.error(`Something went wrong ${err}`);
     }
   } while (lastResult.next !== null);
-  const populationSum = populationList.reduce((partialSum, a) => partialSum + a, 0);
-  return responseHandler(200, populationSum);
+  const totalPopulation = populationList.reduce((partialSum, a) => partialSum + a, 0);
+  const populationReturn = {
+    totalPopulation: totalPopulation,
+    planetTotal: planetCounter,
+  };
+  return responseHandler(200, populationReturn);
 };
 
 
