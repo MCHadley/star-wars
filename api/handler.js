@@ -7,7 +7,7 @@ const {responseHandler, swapi} = require('../util/Utils');
 const getStarships = async (event, context) => {
   try {
     const starships = swapi('people');
-    const response = await axios.get(starships, {params: {search: event.queryStringParameters.search}});
+    const response = await axios.get(starships, {params: {search: 'Luke Skywalker'}});
     if (response.data.count > 0) {
       const starshipsData = response.data.results[0].starships;
       let starshipsList = [];
@@ -17,7 +17,7 @@ const getStarships = async (event, context) => {
       }
       return responseHandler(200, starshipsList);
     } else {
-      return responseHandler(400, 'There was an error with your request');
+      return responseHandler(404, 'Nothing found');
     }
   } catch (err) {
     console.error(`An error has occured: ${err}`);
@@ -28,7 +28,7 @@ const getStarships = async (event, context) => {
 const getSpecies = async (event, context) => {
   try {
     const episodeOne = swapi('films');
-    const response = await axios.get(episodeOne, {params: {search: event.queryStringParameters.search}});
+    const response = await axios.get(episodeOne, {params: {search: 'The Phantom Menace'}});
     if (response.data.count > 0) {
       const species = response.data.results[0].species;
       let speciesSet = new Set();
@@ -40,7 +40,7 @@ const getSpecies = async (event, context) => {
       const speciesArray = Array.from(speciesSet);
       return responseHandler(200, speciesArray);
     } else {
-      return responseHandler(400, 'There was an error with your request');
+      return responseHandler(404, 'Nothing found');
     }
   } catch (err) {
     console.error(`An error has occured: ${err}`);
