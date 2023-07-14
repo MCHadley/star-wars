@@ -10,7 +10,7 @@ authorName: 'Serverless, inc.'
 authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 -->
 
-## Star Wars API Instructions
+## Star Wars API Instructions (Job interview coding exercise)
 
 This is a small API to return the following information from the Star Wars API:
 1. The Starships associated with Luke Skywalker
